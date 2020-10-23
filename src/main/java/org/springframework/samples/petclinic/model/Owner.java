@@ -61,6 +61,10 @@ public class Owner extends Person {
     @NotEmpty
     private String city;
 
+    @Column(name = "active")
+    @NotEmpty
+    private boolean active;
+
     @Column(name = "telephone")
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
@@ -69,6 +73,13 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Pet> pets;
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public String getAddress() {
         return this.address;
